@@ -22,5 +22,5 @@ size_t count_using_Functor(const WordVec& vec, int n);
 void multisetUsingMyComparator(const WordVec& vec);
 std::vector<long> getnerate_Fibonacci(int n);
 bool areAnagrams(const std::string& s1, const std::string& s2);
-#include "Solutions.h"
+//#include "Solutions.h"
 #endif
