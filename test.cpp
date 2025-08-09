@@ -3,6 +3,7 @@
 //using namespace std;
 
 int main(){
+    /*
     //Test TASK1
     WordVec words = read_words_into_vector("words1.txt");
     for(const auto& w:words){
@@ -35,7 +36,14 @@ int main(){
     for(const auto& w:words2){
         std::cout<<w<<std::endl;
     }
+    */
 
+    //Test TASK5
+    if(is_palindrome("Hellooll5feH")){
+        std::cout<<"This is a plain"<<std::endl;
+    } else{
+        std::cout<<"This is NOT a plain"<<std::endl;
+    }
 
 
     return 0;

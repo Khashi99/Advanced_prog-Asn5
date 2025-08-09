@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iterator>
 #include <stdexcept>
+#include <cctype>
 
 //TASK1
 WordVec read_words_into_vector(const std::string& inFileName){
@@ -21,7 +22,7 @@ WordVec read_words_into_vector(const std::string& inFileName){
     return words_vector;
 }   
 
-
+//=====================================================================================
 //TASK2
 WordMap map_and_count_words_using_lambda(const WordVec& wVec){
     WordMap wMap; 
@@ -29,7 +30,7 @@ WordMap map_and_count_words_using_lambda(const WordVec& wVec){
     return wMap;
 }
 
-
+//=====================================================================================
 //TASK3
 WordMap map_and_count_words_using_functor(const WordVec& wVec){
     struct WordCountFunctor{
@@ -48,7 +49,7 @@ WordMap map_and_count_words_using_functor(const WordVec& wVec){
     return wcf.getMap();
 }
 
-
+//=====================================================================================
 //TASK4
 WordVec remove_duplicates(const WordVec& words_vector){
     WordVec removed_duplicates;
@@ -62,8 +63,23 @@ WordVec remove_duplicates(const WordVec& words_vector){
     return removed_duplicates;
 }
 
-
+//=====================================================================================
 //TASK5 
-bool is_palindrome(const std::string& phrase){
-    
+// free funtion that returns true for true for non-apha chars
+bool is_alphabetic(unsigned char c) {
+    return !std::isalpha(c); 
 }
+
+bool is_palindrome(const std::string& phrase){
+    std::string temp;
+
+    std::remove_copy_if(phrase.begin(), phrase.end(), std::back_inserter(temp), is_alphabetic);
+
+    std::transform(temp.begin(), temp.end(), temp.begin(), [](unsigned char c) { return std::tolower(c);});
+
+    return std::equal(temp.begin(), temp.begin() + temp.size()/2, temp.rbegin());
+}
+
+//=====================================================================================
+//TASK6
+
