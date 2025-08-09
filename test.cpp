@@ -27,5 +27,16 @@ int main(){
         std::cout<<x<<" "<<y<<std::endl;
     }
 
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+
+    //Test TASK4
+    WordVec words2 = remove_duplicates(words);
+    for(const auto& w:words2){
+        std::cout<<w<<std::endl;
+    }
+
+
+
     return 0;
 }

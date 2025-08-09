@@ -50,4 +50,14 @@ WordMap map_and_count_words_using_functor(const WordVec& wVec){
 
 
 //TASK4
+WordVec remove_duplicates(const WordVec& words_vector){
+    WordVec removed_duplicates;
+    removed_duplicates = words_vector;
 
+    std::sort(removed_duplicates.begin(), removed_duplicates.end());
+    auto it_to_new_end = std::unique(removed_duplicates.begin(), removed_duplicates.end());
+
+    removed_duplicates.erase(it_to_new_end, removed_duplicates.end());
+
+    return removed_duplicates;
+}
