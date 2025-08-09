@@ -61,3 +61,9 @@ WordVec remove_duplicates(const WordVec& words_vector){
 
     return removed_duplicates;
 }
+
+
+//TASK5 
+bool is_palindrome(const std::string& phrase){
+    
+}
