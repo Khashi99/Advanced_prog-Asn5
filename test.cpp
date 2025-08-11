@@ -3,7 +3,7 @@
 //using namespace std;
 
 int main(){
-    /*
+    
     //Test TASK1
     WordVec words = read_words_into_vector("words1.txt");
     for(const auto& w:words){
@@ -12,7 +12,8 @@ int main(){
 
     std::cout<<std::endl;
     std::cout<<std::endl;
-
+    
+    /*
     //Test TASK2
     WordMap map= map_and_count_words_using_lambda(words);
     for(const auto& [x,y]:map){
@@ -36,7 +37,7 @@ int main(){
     for(const auto& w:words2){
         std::cout<<w<<std::endl;
     }
-    */
+    
 
     //Test TASK5
     if(is_palindrome("Hellooll5feH")){
@@ -44,6 +45,12 @@ int main(){
     } else{
         std::cout<<"This is NOT a plain"<<std::endl;
     }
+    */
+
+
+    std::cout<<count_using_lambda(words,4)<<std::endl;
+    std::cout<<count_using_Functor(words,4)<<std::endl;
+    std::cout<<count_using_Free_Func(words,4)<<std::endl;
 
 
     return 0;

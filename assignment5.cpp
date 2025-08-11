@@ -3,8 +3,10 @@
 #include <iterator>
 #include <stdexcept>
 #include <cctype>
+#include <functional>
+#include <set>
 
-//TASK1
+//TASK1 
 WordVec read_words_into_vector(const std::string& inFileName){
     
     WordVec words_vector;
@@ -81,5 +83,36 @@ bool is_palindrome(const std::string& phrase){
 }
 
 //=====================================================================================
-//TASK6  
+//TASK6: counting string by length using three methods
+//a)
+size_t count_using_lambda(const WordVec& vec, int n){
+    auto lambda = [n](const std::string& str){return str.size()==n;};
+    int final_count = std::count_if(vec.begin(), vec.end(), lambda);
+    return final_count;
+}
+
+//b)
+struct functor_count{
+    int n;
+    bool operator()(const std::string& str){
+        return str.size()==n;
+    }
+};
+size_t count_using_Functor(const WordVec& vec, int n){
+    int final_count2 = std::count_if(vec.begin(), vec.end(), functor_count{n});
+    return final_count2;
+}
+
+//c)
+bool free_func_count(const std::string& str, int n){
+    return str.size()==n;
+}
+size_t count_using_Free_Func(const WordVec& vec, int n){
+    auto unaryFreeFunc = std::bind(free_func_count,std::placeholders::_1, n);
+    int final_count3 = std::count_if(vec.begin(), vec.end(), unaryFreeFunc);
+    return final_count3;
+}
+
+//=====================================================================================
+//TASK7:
 
