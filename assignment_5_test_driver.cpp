@@ -1,10 +1,11 @@
+#include "assignment5.h"
 #include <cassert>
 #include <iostream>
 using std::cout;
 using std::endl;
 using std::cin;
 
-#include "assignment5.h"
+
 
 // function prototypes
 void validate_words_vector(const WordVec& word_vector);
@@ -157,14 +158,14 @@ void task_6_test_driver()
 }
 
 // Task 7
-void task_7_test_driver()
-{
-   cout << "\nTask 7: Multiset using Custom Sorting Criteria" << endl;
-   std::vector<std::string> vec =
-   { "C", "BB", "A", "CC", "A", "B", "BB", "A", "D", "CC", "DDD", "AAA" };
-   multisetUsingMyComparator(vec);
-   cout << endl;
-}
+   void task_7_test_driver()
+   {
+      cout << "\nTask 7: Multiset using Custom Sorting Criteria" << endl;
+      std::vector<std::string> vec =
+      { "C", "BB", "A", "CC", "A", "B", "BB", "A", "D", "CC", "DDD", "AAA" };
+      multisetUsingMyComparator(vec);
+      cout << endl;
+   }
 
 // Task 8
 void task_8_test_driver(int n)
@@ -188,12 +189,13 @@ void task_9_test_driver()
   assert(areAnagrams("Listen", "Silent"));                
   assert(areAnagrams("A gentleman", "Elegant man"));    
   assert(areAnagrams("Hello, World!", "delloh!rwol")); 
-  assert( ! areAnagrams("Test", "Best"));                
+  assert( !areAnagrams("Test", "Best"));     
+  cout<<"task9 was done!"<<endl;          
 }
 
 int main()
 {
-   std::string infilename{ R"(C:\Users\msi\CPP\words.txt)" }; // adjust the input file path
+   std::string infilename{ R"(D:\Concordia\Summer_2025\COMP_5421\Assignments\Asn5\Advanced_prog-Asn5\words.txt)" }; // adjust the input file path
 
    WordVec words_vector = task_1_test_driver(infilename);
    task_2_test_driver(words_vector);

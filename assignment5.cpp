@@ -1,10 +1,5 @@
 #include "assignment5.h"
-#include <fstream>
-#include <iterator>
-#include <stdexcept>
-#include <cctype>
-#include <functional>
-#include <set>
+
 
 //TASK1 
 WordVec read_words_into_vector(const std::string& inFileName){
@@ -116,3 +111,86 @@ size_t count_using_Free_Func(const WordVec& vec, int n){
 //=====================================================================================
 //TASK7:
 
+//a)
+
+struct MyComparator{
+    bool operator()(const std::string& str1, const std::string& str2) const {
+        if (str1.size()<str2.size()){
+            return true;
+        }    
+        else if(str1.size()==str2.size() && 
+        str1.compare(str2)<0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }   
+};
+
+/*
+auto MyComparator = [](const std::string& str1, const std::string& str2) {
+    if (str1.size()<str2.size()){   
+        return true;
+    }    
+    else if(str1.size()==str2.size() && 
+    str1.compare(str2)<0){
+            return true;
+        }
+        else {
+            return false;
+        }
+};
+*/
+
+void multisetUsingMyComparator(const WordVec& vec){
+    //step 1:
+    std::multiset<std::string, MyComparator> wordSet;
+    std::copy(vec.begin(), vec.end(), std::inserter(wordSet, wordSet.end()));
+
+    //step 2:
+    std::copy(wordSet.begin(), wordSet.end(), std::ostream_iterator<std::string>(std::cout," "));
+}
+
+
+
+//=====================================================================================
+//TASK8:
+struct Fibo{
+    long n1=-1;
+    long n2=1;
+    long operator()(){
+        long next = n1+n2;
+        n1=n2;
+        n2=next;
+        return next;
+    }
+};
+
+std::vector<long> getnerate_Fibonacci(int n){
+    std::vector<long> vec(n);
+    std::generate_n(vec.begin(), n, Fibo());
+    return vec;
+}
+
+//=====================================================================================
+//TASK9:
+bool areAnagrams(const std::string& s1, const std::string& s2){
+    std::string news1;
+    std::string news2;
+
+    std::copy_if(s1.begin(), s1.end(), std::back_inserter(news1), isalpha);
+    std::transform(news1.begin(), news1.end(), news1.begin(), tolower);
+
+    std::copy_if(s2.begin(), s2.end(),  std::back_inserter(news2), isalpha);
+    std::transform(news2.begin(), news2.end(), news2.begin(), tolower);
+
+    if(news1.size()!=news2.size()){
+        return false;
+    }
+
+    std::sort(news1.begin(), news1.end());
+    std::sort(news2.begin(), news2.end());
+
+    return news1==news2;
+}

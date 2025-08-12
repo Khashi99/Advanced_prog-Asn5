@@ -6,6 +6,13 @@
 #include <vector>
 #include <list>
 #include <algorithm>
+#include <fstream>
+#include <iterator>
+#include <stdexcept>
+#include <cctype>
+#include <functional>
+#include <set>
+#include <iostream>
 // Type aliases
 using WordVec = std::vector<std::string>;
 using WordList = std::list<std::string>;
