@@ -12,6 +12,7 @@ WordVec read_words_into_vector(const std::string& inFileName){
     if(!inputfile.is_open()){throw std::runtime_error("File not opened correctly. Please check the file name!");}
 
     std::istream_iterator<std::string> begin_iter(inputfile);
+    
     std::istream_iterator<std::string> end_iter;
 
     std::copy(begin_iter, end_iter, std::back_inserter(words_vector));
